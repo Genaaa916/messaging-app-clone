@@ -4,7 +4,9 @@ import Sidebar from "./Sidebar";
 export default function Dashboard({ id }) {
   return (
     <>
-      <Sidebar id={id}></Sidebar>
+      <div className="d-flex" style={{ height: "100vh" }}>
+        <Sidebar id={id}></Sidebar>
+      </div>
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function Sidebar({ id }) {
             </Nav.Item>
           ))}
         </Nav>
-        <Tab.Content>
+        <Tab.Content className="border border-right overflow-auto flex-grow-1">
           <Tab.Pane eventKey={conversations}>
             <Conversations></Conversations>
           </Tab.Pane>

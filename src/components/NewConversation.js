@@ -7,11 +7,13 @@ export default function NewConversation({ closeModal }) {
   const { createConversation } = useConversations();
   const { contacts } = useContacts();
   const [selection, setSelection] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     createConversation(selection);
     closeModal();
   };
+
   const handleCheckChange = (contactId) => {
     setSelection((prevSelection) => {
       if (prevSelection.includes(contactId)) {
@@ -27,10 +29,11 @@ export default function NewConversation({ closeModal }) {
       <Modal.Header closeButton={closeModal}>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            {contacts.map((contact) => (
+            {contacts.map((contact, index) => (
               <FormGroup>
                 <Form.Check
                   type="checkbox"
+                  key={index}
                   value={selection.includes(contact.id)}
                   label={contact.name}
                   onChange={() => handleCheckChange(contact.id)}></Form.Check>

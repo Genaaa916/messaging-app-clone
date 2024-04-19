@@ -4,10 +4,9 @@ import { ListGroup } from "react-bootstrap";
 
 export default function Contacts() {
   const { contacts } = useContacts();
-  console.log("CONTACTS", contacts);
   return (
     <ListGroup variant="flush">
-      {contacts.map((contact) => (
+      {contacts?.map((contact) => (
         <ListGroup.Item key={contact.id}>{contact.name}</ListGroup.Item>
       ))}
     </ListGroup>

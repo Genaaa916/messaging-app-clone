@@ -11,12 +11,12 @@ export function useContacts() {
 
 // provider component to wrap around the part of the app that needs access to contacts
 export function ContactsProvider({ children }) {
-  // uselocalstorage is a custom hook for storing contacts in local storage
   const [contacts, setContacts] = useLocalStorage("contacts", []);
 
   const createContact = (id, name) => {
     setContacts((existing) => {
-      return [...existing, { id, name }];
+      const contacts = existing || [];
+      return [...contacts, { id, name }];
     });
   };
 

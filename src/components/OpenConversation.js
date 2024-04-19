@@ -5,14 +5,16 @@ import { useConversations } from "../contexts/ConversationsProvider";
 export default function OpenConversation() {
   const [text, setText] = useState("");
 
-  const { sendMessage, selection } = useConversations();
+  const { sendMessage, selectedConversations } = useConversations();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(selectedConversations);
     sendMessage(
-      selection.receiver.map((receiver) => receiver.id),
+      selectedConversations.receivers.map((receiver) => receiver.id),
       text
     );
+    setText("");
   };
   return (
     <div className="px-2 d-flex flex-column flex-grow-1">
@@ -28,10 +30,19 @@ export default function OpenConversation() {
             <Form.Control
               as="textarea"
               required
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey && text.trim() !== "") {
+                  handleSubmit(e);
+                }
+              }}
               value={text}
               onChange={(e) => setText(e.target.value)}
-              style={{ height: "75px", resize: "none" }}></Form.Control>
-            <Button>Send</Button>
+              style={{
+                height: "75px",
+                resize: "none",
+                marginRight: "10px",
+              }}></Form.Control>
+            <Button type="submit">Send</Button>
           </InputGroup>
         </Form.Group>
       </Form>

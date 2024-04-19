@@ -3,7 +3,6 @@ import { Modal, Form, Button } from "react-bootstrap";
 import { useContacts } from "../contexts/ContactsProvider";
 
 export default function NewContact({ closeModal }) {
-  console.log(useContacts());
   const { createContact } = useContacts();
   const handleSubmit = (e) => {
     e.preventDefault();

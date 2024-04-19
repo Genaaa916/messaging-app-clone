@@ -29,11 +29,11 @@ export default function NewConversation({ closeModal }) {
       <Modal.Header closeButton={closeModal}>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            {contacts.map((contact, index) => (
+            {contacts?.map((contact, index) => (
               <FormGroup>
                 <Form.Check
                   type="checkbox"
-                  key={index}
+                  key={contact.id}
                   value={selection.includes(contact.id)}
                   label={contact.name}
                   onChange={() => handleCheckChange(contact.id)}></Form.Check>

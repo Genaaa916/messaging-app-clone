@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const prefix = "messaging-app-";
+const prefix = "messaging_app_";
 
 export default function useLocalStorage(key, initialValue) {
   const prefixedKey = prefix + key;

@@ -18,7 +18,7 @@ export function ConversationsProvider({ id, children }) {
     "conversations",
     [] // init state for conversations
   );
-
+  // const socket = useSocket();
   const createConversation = (receivers) => {
     setConversations((existing) => {
       const conversationExists = existing.some((conversation) =>
@@ -69,12 +69,11 @@ export function ConversationsProvider({ id, children }) {
       );
       const name = (contact && contact.name) || "";
       const fromMe = id === message.sender;
-      console.log("this", { ...message, senderName: name, fromMe });
       return { ...message, senderName: name, fromMe };
     });
     // mark conversation as selected if it matches the current selection index
     const selected = index === selectionIndex;
-    return { ...conversation, receivers, selected };
+    return { ...conversation, messages, receivers, selected };
   });
 
   // object to be provided to the context's consumers
